@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Açaí Carmelitano</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --deep:#1a0330; --berry:#7C3AED; --magenta:#C026D3; --gold:#F59E0B; }
+  *{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--deep);color:#fff;overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,3,20,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;background:linear-gradient(135deg,#fff,#E879F9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .nav-links{display:flex;gap:1.5rem;list-style:none}
+  .nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{background:linear-gradient(135deg,var(--magenta),var(--berry));color:#fff;border:none;padding:.5rem 1.2rem;border-radius:100px;font-size:.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:opacity .2s}
+  .nav-cta:hover{opacity:.85}
+  .hero{min-height:100vh;background:radial-gradient(ellipse at top left,#4c0d6e 0%,#1a0330 50%,#0d0118 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(192,38,211,.15) 0%,transparent 70%);top:-100px;right:-100px;animation:pulse 6s ease-in-out infinite}
+  .hero::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.2) 0%,transparent 70%);bottom:-80px;left:-80px;animation:pulse 8s ease-in-out infinite reverse}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.2);opacity:1}}
+  .hero-badge{background:rgba(192,38,211,.2);border:1px solid rgba(192,38,211,.4);color:#E879F9;padding:.4rem 1.2rem;border-radius:100px;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeDown .8s ease both}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,10vw,7rem);font-weight:900;line-height:1;background:linear-gradient(135deg,#fff 0%,#E879F9 50%,#F59E0B 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;animation:fadeDown .8s ease .2s both}
+  .hero-sub{font-size:1.1rem;color:rgba(255,255,255,.6);margin-bottom:2.5rem;animation:fadeDown .8s ease .4s both}
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeDown .8s ease .6s both}
+  .btn-primary{background:linear-gradient(135deg,var(--magenta),var(--berry));color:#fff;border:none;padding:.9rem 2rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;box-shadow:0 0 30px rgba(192,38,211,.4);transition:all .3s}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(192,38,211,.6)}
+  .btn-wa{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;padding:.9rem 2rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all .3s;display:flex;align-items:center;gap:.5rem}
+  .btn-wa:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}
+  .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.3);font-size:.75rem;letter-spacing:.1em;animation:fadeDown 1s ease 1s both}
+  .scroll-arr{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent);animation:scrollA 2s ease-in-out infinite}
+  @keyframes scrollA{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+  .section{padding:5rem 1.5rem;max-width:1100px;margin:0 auto}
+  .section-header{text-align:center;margin-bottom:3rem}
+  .section-tag{display:inline-block;color:#E879F9;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.15em;margin-bottom:.75rem}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.1}
+  .cat-nav{display:flex;gap:.75rem;overflow-x:auto;margin-bottom:3rem;scrollbar-width:none;justify-content:center;flex-wrap:wrap}
+  .cat-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);padding:.6rem 1.4rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .2s}
+  .cat-btn:hover,.cat-btn.active{background:linear-gradient(135deg,rgba(192,38,211,.3),rgba(124,58,237,.3));border-color:rgba(192,38,211,.5);color:#fff}
+  .category{margin-bottom:4rem}
+  .category-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:.75rem}
+  .category-title::before{content:'';display:block;width:4px;height:1.5rem;background:linear-gradient(to bottom,var(--magenta),var(--berry));border-radius:2px}
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem}
+  .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;transition:all .3s;cursor:pointer}
+  .card:hover{transform:translateY(-4px);border-color:rgba(192,38,211,.3);background:rgba(255,255,255,.07);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 0 1px rgba(192,38,211,.2)}
+  .card-img{width:100%;height:150px;object-fit:cover}
+  .card-ph{width:100%;height:150px;background:linear-gradient(135deg,rgba(192,38,211,.2),rgba(124,58,237,.2));display:none;align-items:center;justify-content:center;font-size:3rem}
+  .card-body{padding:1rem}
+  .card-name{font-weight:600;font-size:.95rem;margin-bottom:.2rem}
+  .card-note{font-size:.78rem;color:var(--gold);margin-bottom:.75rem}
+  .card-footer{display:flex;align-items:center;justify-content:space-between}
+  .card-price{font-size:1.2rem;font-weight:700}
+  .card-price span{font-size:.75rem;font-weight:400;color:rgba(255,255,255,.5);margin-right:2px}
+  .add-btn{background:linear-gradient(135deg,var(--magenta),var(--berry));color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 4px 15px rgba(192,38,211,.4)}
+  .add-btn:hover{transform:scale(1.15)}
+  .cart-float{position:fixed;bottom:2rem;right:2rem;z-index:200}
+  .cart-btn{background:linear-gradient(135deg,var(--magenta),var(--berry));color:#fff;border:none;padding:1rem 1.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.75rem;box-shadow:0 8px 30px rgba(192,38,211,.5);transition:all .3s}
+  .cart-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(192,38,211,.7)}
+  .cart-count{background:#fff;color:var(--berry);border-radius:50%;width:24px;height:24px;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:300;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(8px)}
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{background:#1a0330;border:1px solid rgba(255,255,255,.1);border-radius:24px 24px 0 0;width:100%;max-width:580px;max-height:92vh;overflow-y:auto;padding:2rem;transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+  .modal-overlay.open .modal{transform:translateY(0)}
+  .modal-handle{width:40px;height:4px;background:rgba(255,255,255,.2);border-radius:2px;margin:0 auto 1.5rem}
+  .modal h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.5rem}
+  .addon-section{margin-bottom:1.5rem}
+  .addon-sec-title{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+  .free-badge{display:inline-block;background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.4);color:#4ade80;border-radius:100px;font-size:.7rem;font-weight:600;padding:.15rem .6rem;text-transform:none;letter-spacing:0}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+  .chip{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem .9rem;font-size:.82rem;cursor:pointer;transition:all .2s;user-select:none;color:rgba(255,255,255,.8)}
+  .chip:hover{border-color:rgba(192,38,211,.4);background:rgba(192,38,211,.1)}
+  .chip.sel{background:linear-gradient(135deg,rgba(192,38,211,.35),rgba(124,58,237,.35));border-color:rgba(192,38,211,.6);color:#fff}
+  .chip.paid.sel{background:linear-gradient(135deg,rgba(245,158,11,.25),rgba(217,119,6,.25));border-color:rgba(245,158,11,.6)}
+  .chip-price{font-size:.7rem;color:var(--gold);margin-left:3px}
+  .divider{height:1px;background:rgba(255,255,255,.07);margin:1rem 0}
+  .counter-badge{font-size:.75rem;font-weight:600;color:#E879F9;margin-left:auto}
+  .modal-item{display:flex;justify-content:space-between;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.8);font-size:.9rem;gap:.5rem}
+  .item-left{flex:1}
+  .item-addons{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.2rem}
+  .item-price{color:#fff;font-weight:600;white-space:nowrap}
+  .modal-total{display:flex;justify-content:space-between;padding:1rem 0;font-weight:700;font-size:1.1rem;border-top:1px solid rgba(255,255,255,.15);margin-top:.5rem}
+  .empty-cart{text-align:center;padding:2rem 0;color:rgba(255,255,255,.4)}
+  .form-group{margin-bottom:1.25rem}
+  .form-label{display:block;font-size:.85rem;font-weight:500;color:rgba(255,255,255,.6);margin-bottom:.5rem}
+  .form-input,.form-select,.form-textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.95rem;padding:.85rem 1rem;outline:none;transition:border-color .2s}
+  .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(192,38,211,.5)}
+  .form-select option{background:#1a0330}
+  .form-textarea{resize:none;min-height:80px}
+  #troco-group{display:none}
+  .send-btn{width:100%;background:linear-gradient(135deg,var(--magenta),var(--berry));color:#fff;border:none;padding:1.1rem;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.75rem;transition:all .3s;box-shadow:0 8px 25px rgba(192,38,211,.4)}
+  .send-btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(192,38,211,.6)}
+  .close-modal{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);padding:.6rem 1.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.85rem;cursor:pointer;transition:all .2s;margin-top:.75rem;width:100%}
+  .close-modal:hover{background:rgba(255,255,255,.15);color:#fff}
+  footer{background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.06);text-align:center;padding:2.5rem 1.5rem;color:rgba(255,255,255,.3);font-size:.85rem}
+  footer strong{color:rgba(255,255,255,.6)}
+  .toast{position:fixed;top:5rem;right:2rem;background:rgba(59,7,100,.95);border:1px solid rgba(192,38,211,.4);color:#fff;padding:.75rem 1.25rem;border-radius:12px;font-size:.9rem;font-weight:500;z-index:400;opacity:0;transform:translateX(20px);transition:all .3s;pointer-events:none;backdrop-filter:blur(10px)}
+  .toast.show{opacity:1;transform:translateX(0)}
+  @media(max-width:600px){.nav-links{display:none}.cards-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}.card-img,.card-ph{height:120px}.section{padding:3rem 1rem}.cart-float{bottom:1rem;right:1rem}}
+  ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:3px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Açaí Carmelitano</div>
+  <ul class="nav-links">
+    <li><a href="#menu">Cardápio</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5535998911405" target="_blank" class="nav-cta">📲 WhatsApp</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🍇 Delivery disponível</div>
+  <h1>Açaí<br>Carmelitano</h1>
+  <p class="hero-sub">Os melhores açaís da cidade — feitos com amor</p>
+  <div class="hero-ctas">
+    <a href="#menu" class="btn-primary">Ver Cardápio 🍨</a>
+    <a href="https://wa.me/5535998911405" target="_blank" class="btn-wa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Suporte
+    </a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-arr"></div></div>
+</div>
+
+<div id="menu" class="section">
+  <div class="section-header">
+    <div class="section-tag">🍇 Cardápio completo</div>
+    <h2 class="section-title">Escolha o seu favorito</h2>
+  </div>
+  <div class="cat-nav">
+    <button class="cat-btn active" onclick="filterCat('all',this)">Todos</button>
+    <button class="cat-btn" onclick="filterCat('acai',this)">Açaí Tradicional</button>
+    <button class="cat-btn" onclick="filterCat('fondue',this)">Fondue</button>
+    <button class="cat-btn" onclick="filterCat('cupuacu',this)">Cupuaçu</button>
+    <button class="cat-btn" onclick="filterCat('marmitex',this)">Marmitex</button>
+    <button class="cat-btn" onclick="filterCat('milkshake',this)">Milkshakes</button>
+    <button class="cat-btn" onclick="filterCat('barca',this)">Barcas</button>
+  </div>
+
+  <div class="category" data-cat="acai">
+    <h3 class="category-title">Açaí Tradicional</h3>
+    <div class="cards-grid">
+      <div class="card" onclick="openAddons('Açaí 300ml',16,'acai',3)"><img class="card-img" src="https://alloydeliveryimages.s3.sa-east-1.amazonaws.com/item_images/11194/661fe8b591d34qveis.webp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🍇</div><div class="card-body"><div class="card-name">Açaí 300ml</div><div class="card-footer"><div class="card-price"><span>R$</span>16,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Açaí 400ml',18,'acai',3)"><img class="card-img" src="https://alloydeliveryimages.s3.sa-east-1.amazonaws.com/item_images/11194/661fe8b591d34qveis.webp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🍇</div><div class="card-body"><div class="card-name">Açaí 400ml</div><div class="card-footer"><div class="card-price"><span>R$</span>18,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Açaí 500ml',21,'acai',3)"><img class="card-img" src="https://alloydeliveryimages.s3.sa-east-1.amazonaws.com/item_images/11194/661fe8b591d34qveis.webp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🍇</div><div class="card-body"><div class="card-name">Açaí 500ml</div><div class="card-footer"><div class="card-price"><span>R$</span>21,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Açaí 700ml',25,'acai',3)"><img class="card-img" src="https://alloydeliveryimages.s3.sa-east-1.amazonaws.com/item_images/11194/661fe8b591d34qveis.webp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🍇</div><div class="card-body"><div class="card-name">Açaí 700ml</div><div class="card-footer"><div class="card-price"><span>R$</span>25,00</div><button class="add-btn">+</button></div></div></div>
+    </div>
+  </div>
+
+  <div class="category" data-cat="fondue">
+    <h3 class="category-title">Fondue</h3>
+    <div class="cards-grid">
+      <div class="card" onclick="openAddons('Fondue 480ml',25,'acai',3)"><img class="card-img" src="https://s3.us-west-2.amazonaws.com/whatsmenu/production/imperioacaidelivery/products/516949/t645c6ffe88ad48868420e06a9d6d7f54png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🍫</div><div class="card-body"><div class="card-name">Fondue 480ml</div><div class="card-footer"><div class="card-price"><span>R$</span>25,00</div><button class="add-btn">+</button></div></div></div>
+    </div>
+  </div>
+
+  <div class="category" data-cat="cupuacu">
+    <h3 class="category-title">Creme de Cupuaçu</h3>
+    <div class="cards-grid">
+      <div class="card" onclick="openAddons('Cupuaçu 300ml',16,'acai',3)"><img class="card-img" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRgjCMMZKHizHaQ9G-ROfnG1HDN3kukoB1iImSJFi1u7SqCVTZg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🌿</div><div class="card-body"><div class="card-name">Cupuaçu 300ml</div><div class="card-footer"><div class="card-price"><span>R$</span>16,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Cupuaçu 400ml',18,'acai',3)"><img class="card-img" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRgjCMMZKHizHaQ9G-ROfnG1HDN3kukoB1iImSJFi1u7SqCVTZg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🌿</div><div class="card-body"><div class="card-name">Cupuaçu 400ml</div><div class="card-footer"><div class="card-price"><span>R$</span>18,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Cupuaçu 500ml',21,'acai',3)"><img class="card-img" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRgjCMMZKHizHaQ9G-ROfnG1HDN3kukoB1iImSJFi1u7SqCVTZg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🌿</div><div class="card-body"><div class="card-name">Cupuaçu 500ml</div><div class="card-footer"><div class="card-price"><span>R$</span>21,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Cupuaçu 700ml',25,'acai',3)"><img class="card-img" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRgjCMMZKHizHaQ9G-ROfnG1HDN3kukoB1iImSJFi1u7SqCVTZg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🌿</div><div class="card-body"><div class="card-name">Cupuaçu 700ml</div><div class="card-footer"><div class="card-price"><span>R$</span>25,00</div><button class="add-btn">+</button></div></div></div>
+    </div>
+  </div>
+
+  <div class="category" data-cat="marmitex">
+    <h3 class="category-title">Marmitex de Açaí</h3>
+    <div class="cards-grid">
+      <div class="card" onclick="openAddons('Marmitex 500ml',33,'marmitex',5)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa_j_TEWUzEeorcPPuCexsiY5WqtMiLCN9eA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">📦</div><div class="card-body"><div class="card-name">Marmitex 500ml</div><div class="card-note">✨ 5 adicionais grátis</div><div class="card-footer"><div class="card-price"><span>R$</span>33,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Marmitex 700ml',37,'marmitex',6)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa_j_TEWUzEeorcPPuCexsiY5WqtMiLCN9eA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">📦</div><div class="card-body"><div class="card-name">Marmitex 700ml</div><div class="card-note">✨ 6 adicionais grátis</div><div class="card-footer"><div class="card-price"><span>R$</span>37,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Marmitex 1200ml',49.90,'marmitex',7)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa_j_TEWUzEeorcPPuCexsiY5WqtMiLCN9eA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">📦</div><div class="card-body"><div class="card-name">Marmitex 1200ml</div><div class="card-note">✨ 7 adicionais grátis</div><div class="card-footer"><div class="card-price"><span>R$</span>49,90</div><button class="add-btn">+</button></div></div></div>
+    </div>
+  </div>
+
+  <div class="category" data-cat="milkshake">
+    <h3 class="category-title">Milkshakes</h3>
+    <div class="cards-grid">
+      <div class="card" onclick="openAddons('Milk Chocolate',20,'none',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6y6M-N-SHvOu-qD_J_qPZcAkY15SIfyUtUQ&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🥤</div><div class="card-body"><div class="card-name">Milk Chocolate</div><div class="card-footer"><div class="card-price"><span>R$</span>20,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Milk Morango',20,'none',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6y6M-N-SHvOu-qD_J_qPZcAkY15SIfyUtUQ&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🥤</div><div class="card-body"><div class="card-name">Milk Morango</div><div class="card-footer"><div class="card-price"><span>R$</span>20,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Milk Ninho',22,'none',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6y6M-N-SHvOu-qD_J_qPZcAkY15SIfyUtUQ&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🥤</div><div class="card-body"><div class="card-name">Milk Ninho</div><div class="card-footer"><div class="card-price"><span>R$</span>22,00</div><button class="add-btn">+</button></div></div></div>
+    </div>
+  </div>
+
+  <div class="category" data-cat="barca">
+    <h3 class="category-title">Barcas de Açaí</h3>
+    <div class="cards-grid">
+      <div class="card" onclick="openAddons('Barca 500ml',28,'barca',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROj8OFWq0f7QTiW-g9NJsPr0bkd9igzzueoA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">⛵</div><div class="card-body"><div class="card-name">Barca 500ml</div><div class="card-footer"><div class="card-price"><span>R$</span>28,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Barca 700ml',34,'barca',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROj8OFWq0f7QTiW-g9NJsPr0bkd9igzzueoA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">⛵</div><div class="card-body"><div class="card-name">Barca 700ml</div><div class="card-footer"><div class="card-price"><span>R$</span>34,00</div><button class="add-btn">+</button></div></div></div>
+    </div>
+  </div>
+</div>
+
+<footer id="contato">
+  <strong>Açaí Carmelitano</strong><br>
+  📞 <a href="https://wa.me/5535998911405" style="color:rgba(255,255,255,.5);text-decoration:none">+55 35 99891-1405</a><br><br>
+  Feito com 💜 para os amantes de açaí
+</footer>
+
+<div class="cart-float" id="cartFloat" style="display:none">
+  <button class="cart-btn" onclick="openCart()">🛒 Ver Pedido <div class="cart-count" id="cartCount">0</div></button>
+</div>
+
+<!-- ADDONS MODAL -->
+<div class="modal-overlay" id="addonsModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h2 id="addonsTitle">Personalizar</h2>
+    <p id="addonsSub" style="color:rgba(255,255,255,.45);font-size:.85rem;margin-top:.25rem;margin-bottom:1.5rem"></p>
+
+    <div id="sec-frutas" class="addon-section">
+      <div class="addon-sec-title">🍓 Frutas <span class="free-badge">Grátis</span></div>
+      <div class="chips" id="chips-frutas">
+        <div class="chip" onclick="toggleFree(this)">Uva</div><div class="chip" onclick="toggleFree(this)">Kiwi</div><div class="chip" onclick="toggleFree(this)">Morango</div><div class="chip" onclick="toggleFree(this)">Banana</div><div class="chip" onclick="toggleFree(this)">Pêssego</div><div class="chip" onclick="toggleFree(this)">Abacaxi ao vinho</div><div class="chip" onclick="toggleFree(this)">Cereja</div>
+      </div>
+    </div>
+    <div class="divider" id="div1"></div>
+
+    <div id="sec-gratis" class="addon-section">
+      <div class="addon-sec-title" style="justify-content:space-between">
+        <span>✨ Adicionais Grátis <span class="free-badge" id="free-limit-badge">3 grátis</span></span>
+        <span class="counter-badge" id="gratis-counter">0/3</span>
+      </div>
+      <div class="chips" id="chips-gratis">
+        <div class="chip" onclick="toggleGratis(this)">Leite Ninho</div><div class="chip" onclick="toggleGratis(this)">Leite condensado</div><div class="chip" onclick="toggleGratis(this)">Beijinho</div><div class="chip" onclick="toggleGratis(this)">Brigadeiro</div><div class="chip" onclick="toggleGratis(this)">Ovomaltine</div><div class="chip" onclick="toggleGratis(this)">Paçoca</div><div class="chip" onclick="toggleGratis(this)">Granola</div><div class="chip" onclick="toggleGratis(this)">Sucrilhos</div><div class="chip" onclick="toggleGratis(this)">Amendoim granulado</div><div class="chip" onclick="toggleGratis(this)">Granulado chocolate</div><div class="chip" onclick="toggleGratis(this)">Granulado colorido</div><div class="chip" onclick="toggleGratis(this)">Granulado negresco</div><div class="chip" onclick="toggleGratis(this)">Cereal P&B</div><div class="chip" onclick="toggleGratis(this)">Cereal mini branco</div><div class="chip" onclick="toggleGratis(this)">Chocoboll</div><div class="chip" onclick="toggleGratis(this)">Cookies</div><div class="chip" onclick="toggleGratis(this)">Geleia morango</div><div class="chip" onclick="toggleGratis(this)">Geleia frutas vermelhas</div><div class="chip" onclick="toggleGratis(this)">Geleia maracujá</div><div class="chip" onclick="toggleGratis(this)">Mousse maracujá</div><div class="chip" onclick="toggleGratis(this)">Mousse morango</div><div class="chip" onclick="toggleGratis(this)">Mousse limão</div><div class="chip" onclick="toggleGratis(this)">Bala de goma</div><div class="chip" onclick="toggleGratis(this)">Gelatina Docile</div><div class="chip" onclick="toggleGratis(this)">Gelatina Beijos</div><div class="chip" onclick="toggleGratis(this)">Mini xicle</div><div class="chip" onclick="toggleGratis(this)">Dentadura Fini</div><div class="chip" onclick="toggleGratis(this)">Fini banana</div><div class="chip" onclick="toggleGratis(this)">Fini beijos</div><div class="chip" onclick="toggleGratis(this)">Chantilly</div><div class="chip" onclick="toggleGratis(this)">Flocos gourmet</div>
+      </div>
+    </div>
+    <div class="divider" id="div2"></div>
+
+    <div id="sec-chocolates" class="addon-section" style="display:none">
+      <div class="addon-sec-title">🍫 Chocolates <span class="free-badge">Grátis</span></div>
+      <div class="chips">
+        <div class="chip" onclick="toggleFree(this)">Chocolate Preto</div><div class="chip" onclick="toggleFree(this)">Chocolate Branco</div>
+      </div>
+    </div>
+    <div class="divider" id="div-choc" style="display:none"></div>
+
+    <div id="sec-cremes" class="addon-section">
+      <div class="addon-sec-title">🍫 Cremes <span style="font-size:.72rem;color:var(--gold);font-weight:400;text-transform:none;letter-spacing:0">+R$4 cada</span></div>
+      <div class="chips">
+        <div class="chip paid" data-price="4" onclick="togglePaid(this)">Leite Ninho<span class="chip-price">+R$4</span></div>
+        <div class="chip paid" data-price="4" onclick="togglePaid(this)">Ovomaltine<span class="chip-price">+R$4</span></div>
+        <div class="chip paid" data-price="4" onclick="togglePaid(this)">Avelã<span class="chip-price">+R$4</span></div>
+        <div class="chip paid" data-price="4" onclick="togglePaid(this)">Amendoim<span class="chip-price">+R$4</span></div>
+        <div class="chip paid" data-price="4" onclick="togglePaid(this)">Chocotella<span class="chip-price">+R$4</span></div>
+        <div class="chip paid" data-price="4" onclick="togglePaid(this)">Bis Preto<span class="chip-price">+R$4</span></div>
+        <div class="chip paid" data-price="4" onclick="togglePaid(this)">Bis Branco<span class="chip-price">+R$4</span></div>
+        <div class="chip paid" data-price="4" onclick="togglePaid(this)">Choconesco<span class="chip-price">+R$4</span></div>
+        <div class="chip paid" data-price="4" onclick="togglePaid(this)">Chocobombom<span class="chip-price">+R$4</span></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="addon-section">
+      <div class="addon-sec-title">⭐ Especiais</div>
+      <div class="chips">
+        <div class="chip paid" data-price="5" onclick="togglePaid(this)">Nutella<span class="chip-price">+R$5</span></div>
+        <div class="chip paid" data-price="5" onclick="togglePaid(this)">Kit Kat<span class="chip-price">+R$5</span></div>
+        <div class="chip paid" data-price="3" onclick="togglePaid(this)">Sonho de Valsa<span class="chip-price">+R$3</span></div>
+        <div class="chip paid" data-price="3" onclick="togglePaid(this)">Ouro Branco<span class="chip-price">+R$3</span></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <div style="padding-top:.5rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <span style="color:rgba(255,255,255,.6);font-size:.9rem">Total do item:</span>
+        <span id="addonsTotal" style="font-size:1.2rem;font-weight:700">R$ 0,00</span>
+      </div>
+      <button class="send-btn" onclick="confirmAddons()" style="margin-top:0">Adicionar ao Pedido 🛒</button>
+      <button class="close-modal" onclick="closeAddons()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART MODAL -->
+<div class="modal-overlay" id="cartModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h2>Seu Pedido 🛒</h2>
+    <div id="cartItems"></div>
+    <div class="modal-total" id="cartTotalRow" style="display:none"><span>Total</span><span id="cartTotal"></span></div>
+    <div id="orderForm" style="display:none;margin-top:1.5rem">
+      <div class="form-group"><label class="form-label">Seu nome</label><input class="form-input" id="nameInput" type="text" placeholder="Ex: Maria Silva"></div>
+      <div class="form-group"><label class="form-label">Endereço de entrega</label><input class="form-input" id="addressInput" type="text" placeholder="Rua, número, bairro"></div>
+      <div class="form-group">
+        <label class="form-label">Forma de pagamento</label>
+        <select class="form-select" id="paymentInput" onchange="toggleTroco()">
+          <option value="">Escolha...</option><option>Pix</option><option>Dinheiro</option><option>Cartão</option>
+        </select>
+      </div>
+      <div class="form-group" id="troco-group"><label class="form-label">Troco para quanto?</label><input class="form-input" id="trocoInput" type="number" placeholder="Ex: 50"></div>
+      <div class="form-group"><label class="form-label">Observação (opcional)</label><textarea class="form-textarea" id="obsInput" placeholder="Ex: sem granola..."></textarea></div>
+      <button class="send-btn" onclick="sendOrder()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enviar pelo WhatsApp
+      </button>
+    </div>
+    <button class="close-modal" onclick="closeCart()">Fechar</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let cart = [];
+let cur = null;
+
+function fmt(n){return 'R$ '+n.toFixed(2).replace('.',',')}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+
+function filterCat(cat,btn){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.category').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none'});
+}
+
+function openAddons(name,price,type,freeLimit){
+  cur={name,basePrice:price,type,freeLimit};
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));
+  const hasAddons=type!=='none';
+  document.getElementById('sec-frutas').style.display=hasAddons?'':'none';
+  document.getElementById('div1').style.display=hasAddons?'':'none';
+  document.getElementById('sec-gratis').style.display=hasAddons?'':'none';
+  document.getElementById('div2').style.display=hasAddons?'':'none';
+  document.getElementById('sec-cremes').style.display=hasAddons?'':'none';
+  const isBarca=type==='barca';
+  document.getElementById('sec-chocolates').style.display=isBarca?'':'none';
+  document.getElementById('div-choc').style.display=isBarca?'':'none';
+  document.getElementById('addonsTitle').textContent=name+' 🍇';
+  document.getElementById('addonsSub').textContent=freeLimit>0?`Escolha até ${freeLimit} adicionais grátis + pagos à vontade`:hasAddons?'Personalize com adicionais pagos':'Sem adicionais para este item';
+  document.getElementById('free-limit-badge').textContent=freeLimit>0?freeLimit+' grátis':'';
+  updateGratisCounter();
+  updateTotal();
+  document.getElementById('addonsModal').classList.add('open');
+}
+function closeAddons(){document.getElementById('addonsModal').classList.remove('open')}
+
+function toggleFree(el){el.classList.toggle('sel');updateTotal()}
+function toggleGratis(el){
+  const sel=document.querySelectorAll('#chips-gratis .chip.sel').length;
+  if(!el.classList.contains('sel')&&cur.freeLimit>0&&sel>=cur.freeLimit){showToast('⚠️ Limite de '+cur.freeLimit+' grátis! Adicionais extras são pagos.');return}
+  el.classList.toggle('sel');
+  updateGratisCounter();
+  updateTotal();
+}
+function togglePaid(el){el.classList.toggle('sel');updateTotal()}
+
+function updateGratisCounter(){
+  const sel=document.querySelectorAll('#chips-gratis .chip.sel').length;
+  const lim=cur?cur.freeLimit:0;
+  document.getElementById('gratis-counter').textContent=lim>0?sel+'/'+lim+' grátis':'';
+}
+function updateTotal(){
+  if(!cur)return;
+  let extra=0;
+  document.querySelectorAll('.chip.paid.sel').forEach(el=>extra+=parseFloat(el.dataset.price||0));
+  document.getElementById('addonsTotal').textContent=fmt(cur.basePrice+extra);
+}
+
+function confirmAddons(){
+  const labels=[];
+  document.querySelectorAll('#chips-frutas .chip.sel').forEach(el=>labels.push(el.textContent.trim()));
+  document.querySelectorAll('#chips-gratis .chip.sel').forEach(el=>labels.push(el.textContent.trim()));
+  document.querySelectorAll('#sec-chocolates .chip.sel').forEach(el=>labels.push(el.textContent.trim()));
+  let extra=0;
+  document.querySelectorAll('.chip.paid.sel').forEach(el=>{
+    const p=parseFloat(el.dataset.price);
+    const name=el.childNodes[0].textContent.trim();
+    labels.push(name+' (+R$'+p+')');
+    extra+=p;
+  });
+  const totalPrice=cur.basePrice+extra;
+  const addonStr=labels.join(', ');
+  const existing=cart.find(i=>i.name===cur.name&&i.addonStr===addonStr);
+  if(existing)existing.qty++;
+  else cart.push({name:cur.name,price:totalPrice,qty:1,addonStr});
+  updateCartUI();
+  closeAddons();
+  showToast('✅ '+cur.name+' adicionado!');
+}
+
+function updateCartUI(){
+  const total=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartFloat').style.display=total>0?'block':'none';
+  document.getElementById('cartCount').textContent=total;
+}
+function openCart(){document.getElementById('cartModal').classList.add('open');renderCart()}
+function closeCart(){document.getElementById('cartModal').classList.remove('open')}
+function removeFromCart(i){if(cart[i].qty>1)cart[i].qty--;else cart.splice(i,1);updateCartUI();renderCart()}
+function renderCart(){
+  const el=document.getElementById('cartItems'),totalRow=document.getElementById('cartTotalRow'),form=document.getElementById('orderForm');
+  if(!cart.length){el.innerHTML='<div class="empty-cart"><div style="font-size:3rem">🛒</div><p style="margin-top:.5rem">Carrinho vazio</p></div>';totalRow.style.display='none';form.style.display='none';return}
+  let html='',total=0;
+  cart.forEach((item,i)=>{
+    total+=item.price*item.qty;
+    html+=`<div class="modal-item"><div class="item-left"><div>${item.qty}x ${item.name}</div>${item.addonStr?`<div class="item-addons">${item.addonStr}</div>`:''}</div><span style="display:flex;align-items:center;gap:.75rem"><span class="item-price">${fmt(item.price*item.qty)}</span><button onclick="removeFromCart(${i})" style="background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.5);width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center">−</button></span></div>`;
+  });
+  el.innerHTML=html;
+  document.getElementById('cartTotal').textContent=fmt(total);
+  totalRow.style.display='flex';form.style.display='block';
+}
+function toggleTroco(){document.getElementById('troco-group').style.display=document.getElementById('paymentInput').value==='Dinheiro'?'block':'none'}
+function sendOrder(){
+  const name=document.getElementById('nameInput').value.trim();
+  const address=document.getElementById('addressInput').value.trim();
+  const payment=document.getElementById('paymentInput').value;
+  if(!name||!address||!payment){showToast('⚠️ Preencha nome, endereço e pagamento!');return}
+  let msg='🍇 *Novo Pedido — Açaí Carmelitano*\n\n👤 *Cliente:* '+name+'\n📍 *Endereço:* '+address+'\n\n*Itens:*\n';
+  let total=0;
+  cart.forEach(item=>{
+    msg+='• '+item.qty+'x '+item.name;
+    if(item.addonStr)msg+='\n   └ '+item.addonStr;
+    msg+=' — '+fmt(item.price*item.qty)+'\n';
+    total+=item.price*item.qty;
+  });
+  msg+='\n💰 *Total: '+fmt(total)+'*\n💳 *Pagamento:* '+payment;
+  const troco=document.getElementById('trocoInput').value;
+  if(payment==='Dinheiro'&&troco)msg+=' (troco p/ R$'+troco+')';
+  const obs=document.getElementById('obsInput').value.trim();
+  if(obs)msg+='\n\n📝 *Obs:* '+obs;
+  window.open('https://wa.me/5535998911405?text='+encodeURIComponent(msg),'_blank');
+  cart=[];updateCartUI();closeCart();showToast('🎉 Pedido enviado!');
+}
+document.getElementById('cartModal').addEventListener('click',function(e){if(e.target===this)closeCart()});
+document.getElementById('addonsModal').addEventListener('click',function(e){if(e.target===this)closeAddons()});
+</script>
+</body>
+</html>
