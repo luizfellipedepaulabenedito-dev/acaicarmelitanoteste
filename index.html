@@ -104,9 +104,227 @@
   .toast.show{opacity:1;transform:translateX(0)}
   @media(max-width:600px){.nav-links{display:none}.cards-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}.card-img,.card-ph{height:110px}.section{padding:3rem 1rem}.cart-float{bottom:1rem;right:1rem}}
   ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:3px}
+
+  /* ===== DELIVERY STATUS SYSTEM ===== */
+  .delivery-bar{
+    position:fixed;top:0;left:0;right:0;z-index:150;
+    height:44px;display:flex;align-items:center;justify-content:center;gap:.6rem;
+    font-size:.82rem;font-weight:600;letter-spacing:.04em;
+    transition:background .6s ease,opacity .4s ease;
+    overflow:hidden;
+  }
+  .delivery-bar::before{
+    content:'';position:absolute;inset:0;
+    background:inherit;filter:brightness(1.15);
+    animation:shimmer-bar 3s ease-in-out infinite;
+    opacity:0;
+  }
+  @keyframes shimmer-bar{0%,100%{opacity:0;transform:translateX(-100%)}50%{opacity:.4;transform:translateX(100%)}}
+  .delivery-bar.open{background:linear-gradient(90deg,#064e3b,#065f46,#047857,#065f46,#064e3b);background-size:300% 100%;}
+  .delivery-bar.closed{background:linear-gradient(90deg,#450a0a,#7f1d1d,#991b1b,#7f1d1d,#450a0a);background-size:300% 100%;}
+  .delivery-bar.paused{background:linear-gradient(90deg,#451a03,#78350f,#92400e,#78350f,#451a03);background-size:300% 100%;}
+  .delivery-bar .db-dot{
+    width:8px;height:8px;border-radius:50%;flex-shrink:0;
+    box-shadow:0 0 8px currentColor;
+  }
+  .delivery-bar.open .db-dot{background:#4ade80;color:#4ade80;animation:blink-green 1.4s ease-in-out infinite;}
+  .delivery-bar.closed .db-dot{background:#f87171;color:#f87171;}
+  .delivery-bar.paused .db-dot{background:#fb923c;color:#fb923c;animation:blink-orange 1.4s ease-in-out infinite;}
+  @keyframes blink-green{0%,100%{opacity:1;box-shadow:0 0 8px #4ade80,0 0 16px #4ade80;}50%{opacity:.5;box-shadow:0 0 4px #4ade80;}}
+  @keyframes blink-orange{0%,100%{opacity:1;box-shadow:0 0 8px #fb923c,0 0 16px #fb923c;}50%{opacity:.5;box-shadow:0 0 4px #fb923c;}}
+  .delivery-bar .db-text{color:#fff;}
+  .delivery-bar .db-eta{
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+    color:rgba(255,255,255,.85);padding:.18rem .6rem;border-radius:100px;font-size:.72rem;
+  }
+  .delivery-bar .db-admin-btn{
+    position:absolute;right:.75rem;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+    color:rgba(255,255,255,.6);padding:.2rem .55rem;border-radius:6px;
+    font-size:.7rem;font-weight:500;cursor:pointer;transition:all .2s;letter-spacing:0;
+  }
+  .delivery-bar .db-admin-btn:hover{background:rgba(255,255,255,.2);color:#fff;}
+
+  /* Nav offset when bar is visible */
+  nav{top:44px;}
+  .hero{padding-top:calc(100vh + 44px);margin-top:0;}
+  body{padding-top:0;}
+
+  /* ===== ADMIN PANEL ===== */
+  .admin-overlay{
+    position:fixed;inset:0;z-index:500;
+    background:rgba(0,0,0,.75);backdrop-filter:blur(12px);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity .3s;
+    padding:1rem;
+  }
+  .admin-overlay.open{opacity:1;pointer-events:all;}
+  .admin-panel{
+    background:linear-gradient(145deg,#120220,#1e0535);
+    border:1px solid rgba(192,38,211,.2);
+    border-radius:24px;width:100%;max-width:420px;
+    padding:2rem;
+    transform:scale(.92) translateY(20px);
+    transition:transform .4s cubic-bezier(.16,1,.3,1);
+    box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(192,38,211,.1);
+  }
+  .admin-overlay.open .admin-panel{transform:scale(1) translateY(0);}
+  .admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;}
+  .admin-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff;}
+  .admin-close{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+    color:rgba(255,255,255,.5);width:34px;height:34px;border-radius:50%;
+    font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .admin-close:hover{background:rgba(255,255,255,.15);color:#fff;}
+  .admin-lock-section{margin-bottom:1.5rem;}
+  .admin-lock-label{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;}
+  .admin-pin{
+    display:flex;gap:.5rem;
+  }
+  .admin-pin input{
+    flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    border-radius:10px;color:#fff;font-family:'DM Sans',sans-serif;
+    font-size:1.1rem;padding:.6rem .9rem;outline:none;letter-spacing:.3em;
+    transition:border-color .2s;
+  }
+  .admin-pin input:focus{border-color:rgba(192,38,211,.5);}
+  .admin-pin button{
+    background:linear-gradient(135deg,var(--magenta),var(--berry));
+    color:#fff;border:none;border-radius:10px;padding:.6rem 1.1rem;
+    font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;
+    transition:all .2s;white-space:nowrap;
+  }
+  .admin-pin button:hover{filter:brightness(1.1);}
+  .admin-locked-msg{font-size:.78rem;color:rgba(255,255,255,.35);margin-top:.4rem;}
+  .admin-controls{display:none;}
+  .admin-controls.unlocked{display:block;}
+  .admin-section-label{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.85rem;}
+  .status-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-bottom:1.5rem;}
+  .status-card{
+    border-radius:14px;padding:.9rem .6rem;text-align:center;cursor:pointer;
+    border:2px solid transparent;transition:all .25s;
+    background:rgba(255,255,255,.04);
+  }
+  .status-card:hover{transform:translateY(-2px);}
+  .status-card.active-open{border-color:#4ade80;background:rgba(74,222,128,.1);}
+  .status-card.active-closed{border-color:#f87171;background:rgba(248,113,113,.1);}
+  .status-card.active-paused{border-color:#fb923c;background:rgba(251,146,60,.1);}
+  .status-card .sc-icon{font-size:1.5rem;margin-bottom:.4rem;}
+  .status-card .sc-label{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);}
+  .status-card.active-open .sc-label{color:#4ade80;}
+  .status-card.active-closed .sc-label{color:#f87171;}
+  .status-card.active-paused .sc-label{color:#fb923c;}
+  .eta-section{margin-bottom:1.5rem;}
+  .eta-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .eta-chip{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+    border-radius:100px;padding:.4rem .85rem;font-size:.78rem;color:rgba(255,255,255,.6);
+    cursor:pointer;transition:all .2s;
+  }
+  .eta-chip:hover{border-color:rgba(192,38,211,.4);color:#fff;}
+  .eta-chip.sel{background:rgba(192,38,211,.2);border-color:rgba(192,38,211,.5);color:#fff;}
+  .msg-section{margin-bottom:1.5rem;}
+  .admin-msg-input{
+    width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    border-radius:10px;color:#fff;font-family:'DM Sans',sans-serif;
+    font-size:.88rem;padding:.7rem .9rem;outline:none;resize:none;
+    transition:border-color .2s;
+  }
+  .admin-msg-input:focus{border-color:rgba(192,38,211,.4);}
+  .admin-msg-input::placeholder{color:rgba(255,255,255,.25);}
+  .admin-apply-btn{
+    width:100%;background:linear-gradient(135deg,var(--magenta),var(--berry));
+    color:#fff;border:none;border-radius:12px;padding:.95rem;
+    font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;
+    transition:all .3s;box-shadow:0 6px 20px rgba(192,38,211,.35);
+  }
+  .admin-apply-btn:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(192,38,211,.5);}
+  .admin-success{
+    text-align:center;font-size:.82rem;color:#4ade80;
+    margin-top:.75rem;opacity:0;transition:opacity .3s;
+  }
+  .admin-success.show{opacity:1;}
+
+  /* Hero badge updated by JS */
+  .hero-badge.status-open{background:rgba(74,222,128,.15);border-color:rgba(74,222,128,.4);color:#4ade80;}
+  .hero-badge.status-closed{background:rgba(248,113,113,.15);border-color:rgba(248,113,113,.4);color:#f87171;}
+  .hero-badge.status-paused{background:rgba(251,146,60,.15);border-color:rgba(251,146,60,.4);color:#fb923c;}
+
+  /* Closed overlay on cart button */
+  .cart-btn.delivery-disabled{
+    opacity:.5;filter:grayscale(.6);pointer-events:none;
+    cursor:not-allowed;
+  }
 </style>
 </head>
 <body>
+
+<!-- ===== DELIVERY STATUS BAR ===== -->
+<div id="deliveryBar" class="delivery-bar open">
+  <div class="db-dot"></div>
+  <span class="db-text" id="dbText">Delivery aberto • Fazendo pedidos agora</span>
+  <span class="db-eta" id="dbEta">⏱ 30–45 min</span>
+  <button class="db-admin-btn" onclick="openAdmin()">⚙ Admin</button>
+</div>
+
+<!-- ===== ADMIN PANEL ===== -->
+<div class="admin-overlay" id="adminOverlay" onclick="handleOverlayClick(event)">
+  <div class="admin-panel">
+    <div class="admin-header">
+      <div class="admin-title">🔧 Painel Admin</div>
+      <button class="admin-close" onclick="closeAdmin()">✕</button>
+    </div>
+
+    <!-- PIN LOCK -->
+    <div class="admin-lock-section" id="adminLockSection">
+      <div class="admin-lock-label">Senha de acesso</div>
+      <div class="admin-pin">
+        <input type="password" id="adminPinInput" placeholder="••••" maxlength="10" onkeydown="if(event.key==='Enter')checkPin()">
+        <button onclick="checkPin()">Entrar</button>
+      </div>
+      <div class="admin-locked-msg" id="adminLockMsg">Digite a senha para gerenciar o delivery</div>
+    </div>
+
+    <!-- CONTROLS (shown after unlock) -->
+    <div class="admin-controls" id="adminControls">
+      <div class="admin-section-label">Status do delivery</div>
+      <div class="status-cards">
+        <div class="status-card active-open" id="sc-open" onclick="setStatus('open')">
+          <div class="sc-icon">🟢</div>
+          <div class="sc-label">Aberto</div>
+        </div>
+        <div class="status-card" id="sc-paused" onclick="setStatus('paused')">
+          <div class="sc-icon">🟡</div>
+          <div class="sc-label">Pausado</div>
+        </div>
+        <div class="status-card" id="sc-closed" onclick="setStatus('closed')">
+          <div class="sc-icon">🔴</div>
+          <div class="sc-label">Fechado</div>
+        </div>
+      </div>
+
+      <div class="eta-section">
+        <div class="admin-section-label">Tempo estimado</div>
+        <div class="eta-chips">
+          <div class="eta-chip sel" data-eta="30–45 min" onclick="setEta(this)">30–45 min</div>
+          <div class="eta-chip" data-eta="45–60 min" onclick="setEta(this)">45–60 min</div>
+          <div class="eta-chip" data-eta="60–80 min" onclick="setEta(this)">60–80 min</div>
+          <div class="eta-chip" data-eta="Sob consulta" onclick="setEta(this)">Sob consulta</div>
+        </div>
+      </div>
+
+      <div class="msg-section">
+        <div class="admin-section-label">Mensagem personalizada</div>
+        <textarea class="admin-msg-input" id="adminMsgInput" rows="2" placeholder="Ex: Voltamos às 18h! Cardápio especial hoje 🎉"></textarea>
+      </div>
+
+      <button class="admin-apply-btn" onclick="applyChanges()">✓ Aplicar alterações</button>
+      <div class="admin-success" id="adminSuccess">✅ Status atualizado com sucesso!</div>
+    </div>
+  </div>
+</div>
 
 <nav>
   <div class="nav-logo">Açaí Carmelitano</div>
@@ -118,7 +336,7 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-badge">🍇 Delivery disponível</div>
+  <div class="hero-badge status-open" id="heroBadge">🟢 Delivery aberto agora</div>
   <h1>Açaí<br>Carmelitano</h1>
   <p class="hero-sub">Os melhores açaís da cidade — saúde, energia e sabor</p>
   <div class="hero-ctas">
@@ -286,10 +504,9 @@
       <div class="addon-sec-title">⭐Recheio <span style="font-size:.72rem;font-weight:400;color:rgba(255,255,255,.4);text-transform:none;letter-spacing:0">(escolha 1)</span></div>
       <div class="chips" id="milkshake-recheios">
         <div class="chip paid chip-milk-recheio" data-price="5" onclick="toggleMilkRecheio(this)">Nutella<span class="chip-price">+R$5</span></div>
-        <div class="chip paid chip-milk-recheio" data-price="4" onclick="toggleMilkRecheio(this)">creme ninho<span class="chip-price">+R$4</span></div>
-        <div class="chip paid chip-milk-recheio" data-price="4" onclick="toggleMilkRecheio(this)">creme de ovo maltine<span class="chip-price">+R$4</span></div>
-        <div class="chip paid chip-milk-recheio" data-price="4" onclick="toggleMilkRecheio(this)">chocolate<span class="chip-price">+R$4</span></div>
-        <div class="chip paid chip-milk-recheio" data-price="4" onclick="toggleMilkRecheio(this)">ovo maltine<span class="chip-price">+R$4</span></div>
+        <div class="chip paid chip-milk-recheio" data-price="5" onclick="toggleMilkRecheio(this)">Kit Kat<span class="chip-price">+R$5</span></div>
+        <div class="chip paid chip-milk-recheio" data-price="3" onclick="toggleMilkRecheio(this)">Sonho de Valsa<span class="chip-price">+R$3</span></div>
+        <div class="chip paid chip-milk-recheio" data-price="3" onclick="toggleMilkRecheio(this)">Ouro Branco<span class="chip-price">+R$3</span></div>
       </div>
     </div>
     </div>
@@ -831,6 +1048,138 @@ function confirmMilkshake(){
 document.getElementById('milkshakeModal').addEventListener('click', function(e){
   if(e.target === this) closeMilkshake();
 });
+
+// ========================================================
+// DELIVERY STATUS SYSTEM
+// ========================================================
+
+const ADMIN_PIN = 'açai123'; // Troque a senha aqui!
+
+let deliveryState = {
+  status: 'open',   // 'open' | 'paused' | 'closed'
+  eta: '30–45 min',
+  customMsg: ''
+};
+
+// Load saved state from localStorage (persists between page refreshes)
+(function loadSavedState(){
+  try {
+    const saved = localStorage.getItem('acai_delivery_state');
+    if(saved) deliveryState = {...deliveryState, ...JSON.parse(saved)};
+  } catch(e){}
+  renderDeliveryBar();
+})();
+
+function saveState(){
+  try { localStorage.setItem('acai_delivery_state', JSON.stringify(deliveryState)); } catch(e){}
+}
+
+const statusConfig = {
+  open:   { barClass:'open',   icon:'🟢', barText:'Delivery aberto', badgeText:'🟢 Delivery aberto agora',   badgeClass:'status-open',   cartDisabled:false },
+  paused: { barClass:'paused', icon:'🟡', barText:'Delivery pausado', badgeText:'🟡 Delivery pausado',        badgeClass:'status-paused', cartDisabled:false },
+  closed: { barClass:'closed', icon:'🔴', barText:'Delivery fechado', badgeText:'🔴 Delivery fechado agora',  badgeClass:'status-closed', cartDisabled:true  }
+};
+
+function renderDeliveryBar(){
+  const cfg = statusConfig[deliveryState.status];
+  const bar = document.getElementById('deliveryBar');
+  const dbText = document.getElementById('dbText');
+  const dbEta = document.getElementById('dbEta');
+  const badge = document.getElementById('heroBadge');
+  const cartBtn = document.querySelector('.cart-btn');
+
+  // Update bar
+  bar.className = 'delivery-bar ' + cfg.barClass;
+  const msg = deliveryState.customMsg ? deliveryState.customMsg : cfg.barText + (deliveryState.status === 'open' ? ' • Fazendo pedidos agora' : '');
+  dbText.textContent = msg;
+
+  // ETA: only show when open or paused
+  if(deliveryState.status !== 'closed'){
+    dbEta.style.display = '';
+    dbEta.textContent = '⏱ ' + deliveryState.eta;
+  } else {
+    dbEta.style.display = 'none';
+  }
+
+  // Update hero badge
+  badge.className = 'hero-badge ' + cfg.badgeClass;
+  badge.textContent = cfg.badgeText;
+
+  // Disable/enable cart button when closed
+  if(cartBtn){
+    if(cfg.cartDisabled) cartBtn.classList.add('delivery-disabled');
+    else cartBtn.classList.remove('delivery-disabled');
+  }
+}
+
+// ---- Admin Panel ----
+let adminUnlocked = false;
+
+function openAdmin(){
+  document.getElementById('adminOverlay').classList.add('open');
+  if(!adminUnlocked){
+    document.getElementById('adminPinInput').focus();
+  }
+}
+
+function closeAdmin(){
+  document.getElementById('adminOverlay').classList.remove('open');
+}
+
+function handleOverlayClick(e){
+  if(e.target === document.getElementById('adminOverlay')) closeAdmin();
+}
+
+function checkPin(){
+  const val = document.getElementById('adminPinInput').value;
+  if(val === ADMIN_PIN){
+    adminUnlocked = true;
+    document.getElementById('adminLockSection').style.display = 'none';
+    document.getElementById('adminControls').classList.add('unlocked');
+    // Sync UI to current state
+    syncAdminUI();
+  } else {
+    document.getElementById('adminLockMsg').textContent = '❌ Senha incorreta. Tente novamente.';
+    document.getElementById('adminLockMsg').style.color = '#f87171';
+    document.getElementById('adminPinInput').value = '';
+    document.getElementById('adminPinInput').focus();
+  }
+}
+
+function syncAdminUI(){
+  // Status cards
+  ['open','paused','closed'].forEach(s => {
+    const card = document.getElementById('sc-'+s);
+    card.className = 'status-card';
+    if(deliveryState.status === s) card.classList.add('active-'+s);
+  });
+  // ETA chips
+  document.querySelectorAll('.eta-chip').forEach(c => {
+    c.classList.toggle('sel', c.dataset.eta === deliveryState.eta);
+  });
+  // Custom message
+  document.getElementById('adminMsgInput').value = deliveryState.customMsg;
+}
+
+function setStatus(s){
+  deliveryState.status = s;
+  syncAdminUI();
+}
+
+function setEta(el){
+  deliveryState.eta = el.dataset.eta;
+  document.querySelectorAll('.eta-chip').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function applyChanges(){
+  deliveryState.customMsg = document.getElementById('adminMsgInput').value.trim();
+  saveState();
+  renderDeliveryBar();
+  const succ = document.getElementById('adminSuccess');
+  succ.classList.add('show');
+  setTimeout(() => succ.classList.remove('show'), 2500);
+}
 </script>
 </body>
 </html>
