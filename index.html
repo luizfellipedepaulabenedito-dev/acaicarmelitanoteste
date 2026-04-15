@@ -150,12 +150,7 @@
     <button class="cat-btn" onclick="filterCat('marmitex',this)">Marmitex</button>
     <button class="cat-btn" onclick="filterCat('milkshake',this)">Milkshakes</button>
     <button class="cat-btn" onclick="filterCat('barca',this)">Barcas</button>
-    <button class="cat-btn" onclick="filterCat('linha-acai',this)">Linha de Açaí</button>
-    <button class="cat-btn" onclick="filterCat('combinado',this)">Açaí Combinado</button>
-    <button class="cat-btn" onclick="filterCat('premium',this)">Premium</button>
-    <button class="cat-btn" onclick="filterCat('creme-fruta',this)">Creme de Fruta</button>
-    <button class="cat-btn" onclick="filterCat('iogurte',this)">Iogurte Grego</button>
-    <button class="cat-btn" onclick="filterCat('gelato',this)">Gelatos</button>
+    
   </div>
 
   <!-- ===================== AÇAÍ TRADICIONAL ===================== -->
@@ -173,7 +168,7 @@
   <div class="category" data-cat="fondue">
     <h3 class="category-title">Fondue</h3>
     <div class="cards-grid">
-      <div class="card" onclick="openAddons('Fondue 480ml',25,'acai',3)"><img class="card-img" src="https://s3.us-west-2.amazonaws.com/whatsmenu/production/imperioacaidelivery/products/516949/t645c6ffe88ad48868420e06a9d6d7f54png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🍫</div><div class="card-body"><div class="card-name">Fondue 480ml</div><div class="card-footer"><div class="card-price"><span>R$</span>25,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openFondue('Fondue 480ml',25)"><img class="card-img" src="https://s3.us-west-2.amazonaws.com/whatsmenu/production/imperioacaidelivery/products/516949/t645c6ffe88ad48868420e06a9d6d7f54png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🍫</div><div class="card-body"><div class="card-name">Fondue 480ml</div><div class="card-footer"><div class="card-price"><span>R$</span>25,00</div><button class="add-btn">+</button></div></div></div>
     </div>
   </div>
 
@@ -202,9 +197,9 @@
   <div class="category" data-cat="milkshake">
     <h3 class="category-title">Milkshakes</h3>
     <div class="cards-grid">
-      <div class="card" onclick="openAddons('Milk Chocolate',20,'none',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6y6M-N-SHvOu-qD_J_qPZcAkY15SIfyUtUQ&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🥤</div><div class="card-body"><div class="card-name">Milk Chocolate</div><div class="card-footer"><div class="card-price"><span>R$</span>20,00</div><button class="add-btn">+</button></div></div></div>
-      <div class="card" onclick="openAddons('Milk Morango',20,'none',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6y6M-N-SHvOu-qD_J_qPZcAkY15SIfyUtUQ&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🥤</div><div class="card-body"><div class="card-name">Milk Morango</div><div class="card-footer"><div class="card-price"><span>R$</span>20,00</div><button class="add-btn">+</button></div></div></div>
-      <div class="card" onclick="openAddons('Milk Ninho',22,'none',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6y6M-N-SHvOu-qD_J_qPZcAkY15SIfyUtUQ&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🥤</div><div class="card-body"><div class="card-name">Milk Ninho</div><div class="card-footer"><div class="card-price"><span>R$</span>22,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openMilkshake('Milk 300ml',16,'none',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6y6M-N-SHvOu-qD_J_qPZcAkY15SIfyUtUQ&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🥤</div><div class="card-body"><div class="card-name">Milk 300ml</div><div class="card-footer"><div class="card-price"><span>R$</span>20,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openMilkshake('Milk 400ml',17,'none',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6y6M-N-SHvOu-qD_J_qPZcAkY15SIfyUtUQ&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🥤</div><div class="card-body"><div class="card-name">Milk 400ml</div><div class="card-footer"><div class="card-price"><span>R$</span>20,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openMilkshake('Milk 500ml',18,'none',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6y6M-N-SHvOu-qD_J_qPZcAkY15SIfyUtUQ&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">🥤</div><div class="card-body"><div class="card-name">Milk 500ml</div><div class="card-footer"><div class="card-price"><span>R$</span>22,00</div><button class="add-btn">+</button></div></div></div>
     </div>
   </div>
 
@@ -212,130 +207,9 @@
   <div class="category" data-cat="barca">
     <h3 class="category-title">Barcas de Açaí</h3>
     <div class="cards-grid">
-      <div class="card" onclick="openAddons('Barca 500ml',28,'barca',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROj8OFWq0f7QTiW-g9NJsPr0bkd9igzzueoA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">⛵</div><div class="card-body"><div class="card-name">Barca 500ml</div><div class="card-footer"><div class="card-price"><span>R$</span>28,00</div><button class="add-btn">+</button></div></div></div>
-      <div class="card" onclick="openAddons('Barca 700ml',34,'barca',0)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROj8OFWq0f7QTiW-g9NJsPr0bkd9igzzueoA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">⛵</div><div class="card-body"><div class="card-name">Barca 700ml</div><div class="card-footer"><div class="card-price"><span>R$</span>34,00</div><button class="add-btn">+</button></div></div></div>
-    </div>
-  </div>
-
-  <!-- DIVISOR entre com preço e sem preço -->
-  <div style="border-top:1px solid rgba(255,255,255,.08);margin:1rem 0 3rem;position:relative;text-align:center">
-    <span style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--deep);padding:0 1rem;color:rgba(255,255,255,.3);font-size:.8rem;white-space:nowrap;letter-spacing:.08em">📋 MAIS SABORES — CONSULTE PREÇO PELO WHATSAPP</span>
-  </div>
-  <div class="category" data-cat="linha-acai">
-    <h3 class="category-title">Linha de Açaí 🍇</h3>
-    <p style="color:rgba(255,255,255,.45);font-size:.85rem;margin-bottom:1rem">Consulte preços e tamanhos disponíveis pelo WhatsApp</p>
-    <div class="flavor-grid">
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Guaraná')"><span class="fc-add">+</span>Açaí com Guaraná</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Morango')"><span class="fc-add">+</span>Açaí com Morango</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Banana')"><span class="fc-add">+</span>Açaí com Banana</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Abacaxi')"><span class="fc-add">+</span>Açaí com Abacaxi</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Laranja')"><span class="fc-add">+</span>Açaí com Laranja</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Maracujá')"><span class="fc-add">+</span>Açaí com Maracujá</div>
-    </div>
-  </div>
-
-  <!-- ===================== AÇAÍ COMBINADO ===================== -->
-  <div class="category" data-cat="combinado">
-    <h3 class="category-title">Linha de Açaí Combinado 🥣</h3>
-    <p style="color:rgba(255,255,255,.45);font-size:.85rem;margin-bottom:1rem">Consulte preços e tamanhos disponíveis pelo WhatsApp</p>
-    <div class="flavor-grid">
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí Grego (com Iogurte Grego)')"><span class="fc-add">+</span>Açaí Grego</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí Casadinho (Açaí com Cupuaçu)')"><span class="fc-add">+</span>Açaí Casadinho</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Iogurte Grego de Morango')"><span class="fc-add">+</span>Iogurte Grego Morango</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Iogurte Grego de Maracujá')"><span class="fc-add">+</span>Iogurte Grego Maracujá</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Creminho de Leite')"><span class="fc-add">+</span>Creminho de Leite</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Chocolate Belga')"><span class="fc-add">+</span>Chocolate Belga</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Creme de Avelã')"><span class="fc-add">+</span>Creme de Avelã</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí Trufado')"><span class="fc-add">+</span>Açaí Trufado</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí Trufado Branco')"><span class="fc-add">+</span>Açaí Trufado Branco</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí com Paçoca')"><span class="fc-add">+</span>Açaí com Paçoca</div>
-    </div>
-  </div>
-
-  <!-- ===================== PREMIUM ===================== -->
-  <div class="category" data-cat="premium">
-    <h3 class="category-title">Linha Premium ⭐</h3>
-    <p style="color:rgba(255,255,255,.45);font-size:.85rem;margin-bottom:1rem">Consulte preços e tamanhos disponíveis pelo WhatsApp</p>
-    <div class="flavor-grid">
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí BLACK')"><span class="fc-add">+</span>Açaí BLACK</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Açaí ZERO AÇÚCAR')"><span class="fc-add">+</span>Açaí ZERO AÇÚCAR</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Creme de Avelã')"><span class="fc-add">+</span>Gelato Creme de Avelã</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Doce de Leite')"><span class="fc-add">+</span>Gelato Doce de Leite</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Pistache')"><span class="fc-add">+</span>Creme de Pistache</div>
-    </div>
-  </div>
-
-  <!-- ===================== CREME DE FRUTA ===================== -->
-  <div class="category" data-cat="creme-fruta">
-    <h3 class="category-title">Linha de Creme de Fruta 🍓</h3>
-    <p style="color:rgba(255,255,255,.45);font-size:.85rem;margin-bottom:1rem">Consulte preços e tamanhos disponíveis pelo WhatsApp</p>
-    <div class="flavor-grid">
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Abacate')"><span class="fc-add">+</span>Abacate</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Abacaxi')"><span class="fc-add">+</span>Abacaxi</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Abacaxi ao Vinho')"><span class="fc-add">+</span>Abacaxi ao Vinho</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Algodão Doce')"><span class="fc-add">+</span>Algodão Doce</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Banana')"><span class="fc-add">+</span>Banana</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Banana Avelã')"><span class="fc-add">+</span>Banana Avelã</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Banana Caramelada')"><span class="fc-add">+</span>Banana Caramelada</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Baunilha')"><span class="fc-add">+</span>Baunilha</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Café')"><span class="fc-add">+</span>Café</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Café com Leite')"><span class="fc-add">+</span>Café com Leite</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Cajá')"><span class="fc-add">+</span>Cajá</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Cappuccino')"><span class="fc-add">+</span>Cappuccino</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Chiclete')"><span class="fc-add">+</span>Chiclete</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Chococo')"><span class="fc-add">+</span>Chococo</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Coco')"><span class="fc-add">+</span>Coco</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Cupuaçu')"><span class="fc-add">+</span>Cupuaçu</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Cupuaçu & Amarena')"><span class="fc-add">+</span>Cupuaçu & Amarena</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Floresta Negra')"><span class="fc-add">+</span>Floresta Negra</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Goiaba')"><span class="fc-add">+</span>Goiaba</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Graviola')"><span class="fc-add">+</span>Graviola</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Laranja')"><span class="fc-add">+</span>Laranja</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Limão')"><span class="fc-add">+</span>Limão</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Manga')"><span class="fc-add">+</span>Manga</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Maracujá')"><span class="fc-add">+</span>Maracujá</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Milho Verde')"><span class="fc-add">+</span>Milho Verde</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Moranga')"><span class="fc-add">+</span>Moranga</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme Napolitano')"><span class="fc-add">+</span>Napolitano</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Papaia')"><span class="fc-add">+</span>Papaia</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Pitaya')"><span class="fc-add">+</span>Pitaya</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Tapioca com Coco')"><span class="fc-add">+</span>Tapioca com Coco</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Creme de Unicórnio')"><span class="fc-add">+</span>Unicórnio 🦄</div>
-    </div>
-  </div>
-
-  <!-- ===================== IOGURTE GREGO ===================== -->
-  <div class="category" data-cat="iogurte">
-    <h3 class="category-title">Linha de Iogurte Grego 🥛</h3>
-    <p style="color:rgba(255,255,255,.45);font-size:.85rem;margin-bottom:1rem">Consulte preços e tamanhos disponíveis pelo WhatsApp</p>
-    <div class="flavor-grid">
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego Natural (Frozen)')"><span class="fc-add">+</span>Natural (Frozen)</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego com Morango')"><span class="fc-add">+</span>Morango</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego com Manga')"><span class="fc-add">+</span>Manga</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego com Maracujá')"><span class="fc-add">+</span>Maracujá</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego com Laranja')"><span class="fc-add">+</span>Laranja</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego com Abacaxi')"><span class="fc-add">+</span>Abacaxi</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego com Goiaba')"><span class="fc-add">+</span>Goiaba</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego com Limão')"><span class="fc-add">+</span>Limão</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego com Coco')"><span class="fc-add">+</span>Coco</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Iogurte Grego com Amarena')"><span class="fc-add">+</span>Amarena</div>
-    </div>
-  </div>
-
-  <!-- ===================== GELATOS ===================== -->
-  <div class="category" data-cat="gelato">
-    <h3 class="category-title">Linha de Gelatos 🍦</h3>
-    <p style="color:rgba(255,255,255,.45);font-size:.85rem;margin-bottom:1rem">Consulte preços e tamanhos disponíveis pelo WhatsApp</p>
-    <div class="flavor-grid">
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Creminho de Leite')"><span class="fc-add">+</span>Creminho de Leite</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Chocolate Belga')"><span class="fc-add">+</span>Chocolate Belga</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Trufa')"><span class="fc-add">+</span>Trufa</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Trufa Branca')"><span class="fc-add">+</span>Trufa Branca</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Paçoca')"><span class="fc-add">+</span>Paçoca</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Carioca (Belga + Creminho)')"><span class="fc-add">+</span>Carioca</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Nata & Flocos')"><span class="fc-add">+</span>Nata & Flocos</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Chocomenta')"><span class="fc-add">+</span>Chocomenta</div>
-      <div class="flavor-chip" onclick="addFlavorToCart('Gelato Creme')"><span class="fc-add">+</span>Creme</div>
+      <div class="card" onclick="openAddons('Barca 500ml',35,'barca',5)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROj8OFWq0f7QTiW-g9NJsPr0bkd9igzzueoA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">⛵</div><div class="card-body"><div class="card-name">Barca pequena</div><div class="card-note">🎉 Escolha 5 adicionais grátis</div><div class="card-footer"><div class="card-price"><span>R$</span>35,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Barca 700ml',45,'barca',6)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROj8OFWq0f7QTiW-g9NJsPr0bkd9igzzueoA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">⛵</div><div class="card-body"><div class="card-name">Barca media</div><div class="card-note">🎉 Escolha 5 adicionais grátis</div><div class="card-footer"><div class="card-price"><span>R$</span>45,00</div><button class="add-btn">+</button></div></div></div>
+      <div class="card" onclick="openAddons('Barca 1000ml',65,'barca',7)"><img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROj8OFWq0f7QTiW-g9NJsPr0bkd9igzzueoA&s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-ph">⛵</div><div class="card-body"><div class="card-name">Barca grande</div><div class="card-note">🎉 Escolha 5 adicionais grátis</div><div class="card-footer"><div class="card-price"><span>R$</span>65,00</div><button class="add-btn">+</button></div></div></div>
     </div>
   </div>
 
@@ -350,6 +224,85 @@
 
 <div class="cart-float" id="cartFloat" style="display:none">
   <button class="cart-btn" onclick="openCart()">🛒 Ver Pedido <div class="cart-count" id="cartCount">0</div></button>
+</div>
+
+<!-- MILKSHAKE MODAL -->
+<div class="modal-overlay" id="milkshakeModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h2 id="milkshakeTitle">Milkshake 🥤</h2>
+    <p style="color:rgba(255,255,255,.45);font-size:.85rem;margin-bottom:1.5rem">
+      Escolha o sabor do seu milkshake
+    </p>
+
+    <div class="addon-section">
+      <div class="addon-sec-title">🥤 Sabores</div>
+      <div class="chips" id="milkshake-sabores">
+
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Iogurte Grego Morango</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Iogurte Grego Maracujá</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Creminho de Leite</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Chocolate Belga</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Creme de Avelã</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Creme de Avelã</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Doce de Leite</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Pistache</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Abacate</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Abacaxi ao Vinho</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Algodão Doce</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Banana Avelã</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Banana Caramelada</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Baunilha</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Café com Leite</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Cajá</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Cappuccino</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Chiclete</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Chococo</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Coco</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Cupuaçu & Amarena</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Floresta Negra</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Goiaba</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Graviola</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Limão</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Manga</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Milho Verde</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Moranga</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Napolitano</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Papaia</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Pitaya</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Tapioca com Coco</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Unicórnio 🦄</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Iogurte Grego Natural</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Iogurte Grego Manga</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Iogurte Grego Laranja</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Iogurte Grego Abacaxi</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Iogurte Grego Goiaba</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Iogurte Grego Coco</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Iogurte Grego Amarena</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Creminho de Leite</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Chocolate Belga</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Trufa</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Trufa Branca</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Paçoca</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Carioca</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Nata & Flocos</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Chocomenta</div>
+<div class="chip chip-sabor" onclick="toggleMilk(this)">Gelato Creme</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div style="padding-top:.5rem">
+      <div style="display:flex;justify-content:space-between;margin-bottom:1rem">
+        <span>Total:</span>
+        <span id="milkshakeTotal">R$ 0,00</span>
+      </div>
+
+      <button class="send-btn" onclick="confirmMilkshake()">Adicionar 🛒</button>
+      <button class="close-modal" onclick="closeMilkshake()">Cancelar</button>
+    </div>
+  </div>
 </div>
 
 <!-- ADDONS MODAL -->
@@ -429,19 +382,17 @@
     </div>
     <div class="divider" id="div-sabor" style="display:none"></div>
 
-    <div id="sec-frutas" class="addon-section">
-      <div class="addon-sec-title">🍓 Frutas <span class="free-badge">Grátis</span></div>
-      <div class="chips" id="chips-frutas">
-        <div class="chip" onclick="toggleFree(this);playChip()">Uva</div><div class="chip" onclick="toggleFree(this);playChip()">Kiwi</div><div class="chip" onclick="toggleFree(this);playChip()">Morango</div><div class="chip" onclick="toggleFree(this);playChip()">Banana</div><div class="chip" onclick="toggleFree(this);playChip()">Pêssego</div><div class="chip" onclick="toggleFree(this);playChip()">Abacaxi ao vinho</div><div class="chip" onclick="toggleFree(this);playChip()">Cereja</div>
-      </div>
-    </div>
+    <div id="sec-frutas" class="addon-section" style="display:none"></div>
     <div class="divider" id="div1"></div>
     <div id="sec-gratis" class="addon-section">
       <div class="addon-sec-title" style="justify-content:space-between">
-        <span>✨ Adicionais Grátis <span class="free-badge" id="free-limit-badge">3 grátis</span></span>
+        <span>🍓 Frutas & Adicionais Grátis <span class="free-badge" id="free-limit-badge">3 grátis</span></span>
         <span class="counter-badge" id="gratis-counter">0/3</span>
       </div>
       <div class="chips" id="chips-gratis">
+        <!-- Frutas (agora dentro dos grátis) -->
+        <div class="chip chip-fruta" onclick="toggleGratis(this);playChip()">🍇 Uva</div><div class="chip chip-fruta" onclick="toggleGratis(this);playChip()">🥝 Kiwi</div><div class="chip chip-fruta" onclick="toggleGratis(this);playChip()">🍓 Morango</div><div class="chip chip-fruta" onclick="toggleGratis(this);playChip()">🍌 Banana</div><div class="chip chip-fruta" onclick="toggleGratis(this);playChip()">🍑 Pêssego</div><div class="chip chip-fruta" onclick="toggleGratis(this);playChip()">🍍 Abacaxi ao vinho</div><div class="chip chip-fruta" onclick="toggleGratis(this);playChip()">🍒 Cereja</div>
+        <!-- Adicionais tradicionais -->
         <div class="chip" onclick="toggleGratis(this);playChip()">Leite Ninho</div><div class="chip" onclick="toggleGratis(this);playChip()">Leite condensado</div><div class="chip" onclick="toggleGratis(this);playChip()">Beijinho</div><div class="chip" onclick="toggleGratis(this);playChip()">Brigadeiro</div><div class="chip" onclick="toggleGratis(this);playChip()">Ovomaltine</div><div class="chip" onclick="toggleGratis(this);playChip()">Paçoca</div><div class="chip" onclick="toggleGratis(this);playChip()">Granola</div><div class="chip" onclick="toggleGratis(this);playChip()">Sucrilhos</div><div class="chip" onclick="toggleGratis(this);playChip()">Amendoim granulado</div><div class="chip" onclick="toggleGratis(this);playChip()">Granulado chocolate</div><div class="chip" onclick="toggleGratis(this);playChip()">Granulado colorido</div><div class="chip" onclick="toggleGratis(this);playChip()">Granulado negresco</div><div class="chip" onclick="toggleGratis(this);playChip()">Cereal P&B</div><div class="chip" onclick="toggleGratis(this);playChip()">Cereal mini branco</div><div class="chip" onclick="toggleGratis(this);playChip()">Chocoboll</div><div class="chip" onclick="toggleGratis(this);playChip()">Cookies</div><div class="chip" onclick="toggleGratis(this);playChip()">Geleia morango</div><div class="chip" onclick="toggleGratis(this);playChip()">Geleia frutas vermelhas</div><div class="chip" onclick="toggleGratis(this);playChip()">Geleia maracujá</div><div class="chip" onclick="toggleGratis(this);playChip()">Mousse maracujá</div><div class="chip" onclick="toggleGratis(this);playChip()">Mousse morango</div><div class="chip" onclick="toggleGratis(this);playChip()">Mousse limão</div><div class="chip" onclick="toggleGratis(this);playChip()">Bala de goma</div><div class="chip" onclick="toggleGratis(this);playChip()">Gelatina Docile</div><div class="chip" onclick="toggleGratis(this);playChip()">Gelatina Beijos</div><div class="chip" onclick="toggleGratis(this);playChip()">Mini xicle</div><div class="chip" onclick="toggleGratis(this);playChip()">Dentadura Fini</div><div class="chip" onclick="toggleGratis(this);playChip()">Fini banana</div><div class="chip" onclick="toggleGratis(this);playChip()">Fini beijos</div><div class="chip" onclick="toggleGratis(this);playChip()">Chantilly</div><div class="chip" onclick="toggleGratis(this);playChip()">Flocos gourmet</div>
       </div>
     </div>
@@ -485,6 +436,57 @@
       </div>
       <button class="send-btn" onclick="confirmAddons()" style="margin-top:0">Adicionar ao Pedido 🛒</button>
       <button class="close-modal" onclick="closeAddons()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FONDUE MODAL -->
+<div class="modal-overlay" id="fondueModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h2 id="fondueTitle">Fondue 480ml 🍫</h2>
+    <p style="color:rgba(255,255,255,.45);font-size:.85rem;margin-top:.25rem;margin-bottom:1.5rem">Escolha o sabor e personalize seu fondue</p>
+
+  
+
+    <!-- Chocolate do Fondue -->
+    <div class="addon-section">
+      <div class="addon-sec-title">🍫 Cobertura de Chocolate <span class="free-badge">Grátis</span></div>
+      <div class="chips" id="fondue-chips-chocolate">
+        <div class="chip" onclick="toggleFondueChoc(this);playChip()">Chocolate Preto</div>
+        <div class="chip" onclick="toggleFondueChoc(this);playChip()">Chocolate Branco</div>
+       
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- Frutas do Fondue -->
+    <div class="addon-section">
+      <div class="addon-sec-title" style="justify-content:space-between">
+        <span>🍓 Frutas & Adicionais Grátis <span class="free-badge">3 grátis</span></span>
+        <span class="counter-badge" id="fondue-gratis-counter">0/3</span>
+      </div>
+      <div class="chips" id="fondue-chips-gratis">
+        <div class="chip chip-fruta" onclick="toggleFondueGratis(this);playChip()">🍇 Uva</div>
+        <div class="chip chip-fruta" onclick="toggleFondueGratis(this);playChip()">🥝 Kiwi</div>
+        <div class="chip chip-fruta" onclick="toggleFondueGratis(this);playChip()">🍓 Morango</div>
+        <div class="chip chip-fruta" onclick="toggleFondueGratis(this);playChip()">🍌 Banana</div>
+    
+        
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    
+    <div style="padding-top:.5rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <span style="color:rgba(255,255,255,.6);font-size:.9rem">Total do item:</span>
+        <span id="fondueTotal" style="font-size:1.2rem;font-weight:700">R$ 0,00</span>
+      </div>
+      <button class="send-btn" onclick="confirmFondue()" style="margin-top:0">Adicionar ao Pedido 🛒</button>
+      <button class="close-modal" onclick="closeFondue()">Cancelar</button>
     </div>
   </div>
 </div>
@@ -606,7 +608,7 @@ function openAddons(name,price,type,freeLimit){
   // Show sabor section for all priced items
   document.getElementById('sec-sabor').style.display='';
   document.getElementById('div-sabor').style.display='';
-  document.getElementById('sec-frutas').style.display=hasAddons?'':'none';
+  document.getElementById('sec-frutas').style.display='none';
   document.getElementById('div1').style.display=hasAddons?'':'none';
   document.getElementById('sec-gratis').style.display=hasAddons?'':'none';
   document.getElementById('div2').style.display=hasAddons?'':'none';
@@ -655,9 +657,7 @@ function confirmAddons(){
   // Sabor escolhido
   const saborEl=document.querySelector('.chip-sabor.sel');
   if(saborEl)labels.push('Sabor: '+saborEl.textContent.trim());
-  // Frutas
-  document.querySelectorAll('#chips-frutas .chip.sel').forEach(el=>labels.push(el.textContent.trim()));
-  // Grátis
+  // Grátis (inclui frutas)
   document.querySelectorAll('#chips-gratis .chip.sel').forEach(el=>labels.push(el.textContent.trim()));
   // Chocolates barca
   document.querySelectorAll('#sec-chocolates .chip.sel').forEach(el=>labels.push(el.textContent.trim()));
@@ -726,6 +726,95 @@ function sendOrder(){
 }
 document.getElementById('cartModal').addEventListener('click',function(e){if(e.target===this)closeCart()});
 document.getElementById('addonsModal').addEventListener('click',function(e){if(e.target===this)closeAddons()});
+document.getElementById('fondueModal').addEventListener('click',function(e){if(e.target===this)closeFondue()});
+
+// ---- FONDUE MODAL ----
+let fondueItem=null;
+function openFondue(name,price){
+  fondueItem={name,basePrice:price};
+  document.querySelectorAll('#fondueModal .chip').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('fondueTitle').textContent=name+' 🍫';
+  document.getElementById('fondue-gratis-counter').textContent='0/3';
+  document.getElementById('fondueTotal').textContent=fmt(price);
+  document.getElementById('fondueModal').classList.add('open');
+}
+function closeFondue(){document.getElementById('fondueModal').classList.remove('open')}
+function toggleFondueSabor(el){
+  document.querySelectorAll('.chip-fondue-sabor').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');playChip();updateFondueTotal();
+}
+function toggleFondueChoc(el){el.classList.toggle('sel');playChip();updateFondueTotal()}
+function toggleFondueGratis(el){
+  const sel=document.querySelectorAll('#fondue-chips-gratis .chip.sel').length;
+  if(!el.classList.contains('sel')&&sel>=3){showToast('⚠️ Limite de 3 adicionais grátis!');return}
+  el.classList.toggle('sel');
+  const newSel=document.querySelectorAll('#fondue-chips-gratis .chip.sel').length;
+  document.getElementById('fondue-gratis-counter').textContent=newSel+'/3';
+  updateFondueTotal();
+}
+function toggleFonduePaid(el){el.classList.toggle('sel');updateFondueTotal()}
+function updateFondueTotal(){
+  if(!fondueItem)return;
+  let extra=0;
+  document.querySelectorAll('#fondue-chips-paid .chip.paid.sel').forEach(el=>extra+=parseFloat(el.dataset.price||0));
+  document.getElementById('fondueTotal').textContent=fmt(fondueItem.basePrice+extra);
+}
+function confirmFondue(){
+  const labels=[];
+  const saborEl=document.querySelector('.chip-fondue-sabor.sel');
+  if(saborEl)labels.push('Sabor: '+saborEl.textContent.trim());
+  document.querySelectorAll('#fondue-chips-chocolate .chip.sel').forEach(el=>labels.push('Chocolate: '+el.textContent.trim()));
+  document.querySelectorAll('#fondue-chips-gratis .chip.sel').forEach(el=>labels.push(el.textContent.trim()));
+  let extra=0;
+  document.querySelectorAll('#fondue-chips-paid .chip.paid.sel').forEach(el=>{
+    const p=parseFloat(el.dataset.price);
+    labels.push(el.childNodes[0].textContent.trim()+' (+R$'+p+')');
+    extra+=p;
+  });
+  const totalPrice=fondueItem.basePrice+extra;
+  const addonStr=labels.join(', ');
+  const existing=cart.find(i=>i.name===fondueItem.name&&i.addonStr===addonStr);
+  if(existing)existing.qty++;
+  else cart.push({name:fondueItem.name,price:totalPrice,qty:1,addonStr,consult:false});
+  updateCartUI();closeFondue();playSuccess();showToast('✅ '+fondueItem.name+' adicionado!');
+}
+
+let milkCur = null;
+
+function openMilkshake(name, price){
+  milkCur = {name, price};
+  document.querySelectorAll('#milkshake-sabores .chip').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('milkshakeTitle').textContent = name + ' 🥤';
+  document.getElementById('milkshakeTotal').textContent = fmt(price);
+  document.getElementById('milkshakeModal').classList.add('open');
+}
+
+function closeMilkshake(){
+  document.getElementById('milkshakeModal').classList.remove('open');
+}
+
+function toggleMilk(el){
+  document.querySelectorAll('#milkshake-sabores .chip').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function confirmMilkshake(){
+  const sabor = document.querySelector('#milkshake-sabores .chip.sel');
+  if(!sabor){
+    showToast('Escolha um sabor!');
+    return;
+  }
+
+  cart.push({
+    name: milkCur.name + ' - ' + sabor.textContent,
+    price: milkCur.price
+  });
+
+  updateCart();
+  closeMilkshake();
+  showToast('Adicionado ao carrinho!');
+}
+
 </script>
 </body>
 </html>
