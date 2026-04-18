@@ -1499,5 +1499,58 @@ function confirmGarrafa() {
 document.getElementById('garrafaModal').addEventListener('click', function(e){ if(e.target===this) closeGarrafa(); });
 </script>
 
+<script>
+function checkDeliveryStatus() {
+  const now = new Date();
+  const hour = now.getHours();
+  const minutes = now.getMinutes();
+
+  // Converter tudo pra minutos (fica mais fácil)
+  const current = hour * 60 + minutes;
+
+  const openTime = 13 * 60;      // 13:00
+  const closeTime = 21 * 60 + 45; // 21:45
+
+  let status = "closed";
+
+  if (current >= openTime && current <= closeTime) {
+    status = "open";
+  } else {
+    status = "closed";
+  }
+
+  updateDeliveryUI(status);
+}
+
+function updateDeliveryUI(status) {
+  const bar = document.getElementById("deliveryBar");
+  const text = document.getElementById("dbText");
+  const hero = document.getElementById("heroBadge");
+  const cartBtn = document.querySelector(".cart-btn");
+
+  bar.classList.remove("open", "closed", "paused");
+
+  if (status === "open") {
+    bar.classList.add("open");
+    text.innerText = "Delivery aberto • Fazendo pedidos agora";
+    hero.innerText = "🟢 Delivery aberto agora";
+    hero.className = "hero-badge status-open";
+    cartBtn.classList.remove("delivery-disabled");
+  } else {
+    bar.classList.add("closed");
+    text.innerText = "Delivery fechado • Abre às 13:00";
+    hero.innerText = "🔴 Delivery fechado";
+    hero.className = "hero-badge status-closed";
+    cartBtn.classList.add("delivery-disabled");
+  }
+}
+
+// Rodar ao carregar
+checkDeliveryStatus();
+
+// Atualiza a cada 1 minuto
+setInterval(checkDeliveryStatus, 60000);
+</script>
+  
 </body>
 </html>
